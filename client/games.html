@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>Библиотека | Steam Mini</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="library">
+
+  <header class="brand-bar">
+    <div class="logo">
+      <span class="orb"></span>
+      <span>Steam</span><span class="sub">mini</span>
+    </div>
+    <nav class="nav">
+      <a class="active" href="games.html">Библиотека</a>
+      <a href="index.html">Сменить аккаунт</a>
+    </nav>
+    <div class="bar-actions">
+      <button class="ghost danger" onclick="logout()">Выйти</button>
+    </div>
+  </header>
+
+  <main class="library-shell">
+
+    <section class="panel ai-panel" id="quiz">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">ИИ подбор</span>
+          <h3 style="margin-top: 6px;">Быстрый тест</h3>
+        </div>
+        <div class="muted">Выберите варианты и добавьте пару слов , а мы подскажем жанр.</div>
+      </div>
+
+      <div class="choices">
+        <div class="choice-label">Темп</div>
+        <div class="choice-row">
+          <button class="choice" data-choice="pace" data-value="спокойный">Спокойный</button>
+          <button class="choice" data-choice="pace" data-value="средний">Средний</button>
+          <button class="choice" data-choice="pace" data-value="динамичный">Динамичный</button>
+        </div>
+
+        <div class="choice-label">Команда</div>
+        <div class="choice-row">
+          <button class="choice" data-choice="company" data-value="соло">Соло</button>
+          <button class="choice" data-choice="company" data-value="кооператив">Кооператив</button>
+          <button class="choice" data-choice="company" data-value="соревнование">Соревнование</button>
+        </div>
+
+        <div class="choice-label">Бюджет</div>
+        <div class="choice-row">
+          <button class="choice" data-choice="price" data-value="free">Free</button>
+          <button class="choice" data-choice="price" data-value="до 20$">До 20$</button>
+          <button class="choice" data-choice="price" data-value="не важно">Не важно</button>
+        </div>
+
+        <div class="choice-label">Настроение</div>
+        <div class="choice-row">
+          <button class="choice" data-choice="vibe" data-value="хоррор">Хоррор</button>
+          <button class="choice" data-choice="vibe" data-value="фэнтези">Фэнтези</button>
+          <button class="choice" data-choice="vibe" data-value="sci-fi">Sci‑fi</button>
+          <button class="choice" data-choice="vibe" data-value="cozy">Cozy</button>
+        </div>
+
+        <div class="choice-label">Сложность</div>
+        <div class="choice-row">
+          <button class="choice" data-choice="difficulty" data-value="казуально">Казуально</button>
+          <button class="choice" data-choice="difficulty" data-value="средне">Средне</button>
+          <button class="choice" data-choice="difficulty" data-value="хардкор">Хардкор</button>
+        </div>
+      </div>
+
+      <label class="field" style="margin-top: 16px;">
+        <span>Что хочется сейчас?</span>
+        <textarea id="prefNotes" rows="3" placeholder="Например: хочу сюжет, открытый мир и фэнтези..."></textarea>
+      </label>
+
+      <div class="ai-actions">
+        <button class="primary" id="runQuizBtn" onclick="runQuiz()">Подобрать игру</button>
+        <div class="muted" id="aiStatus"></div>
+      </div>
+
+      <div class="ai-output">
+        <div class="pill">Жанр: <strong id="detectedGenre">—</strong></div>
+        <p class="muted" id="genreReason"></p>
+        <div class="games-grid" id="aiResults"></div>
+      </div>
+    </section>
+
+    <section class="panel" id="add">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">Добавление</span>
+          <h3 style="margin-top: 6px;">Добавить игру</h3>
+        </div>
+        <div class="muted">Название, жанр, цена, дата — и готово. Можно сразу указать обложку.</div>
+      </div>
+      <div class="add-form">
+        <input id="title" placeholder="Название" />
+        <input id="genre" placeholder="Жанр" />
+        <input id="price" placeholder="Цена, $" />
+        <input id="releaseDate" type="date" />
+        <input id="cover" placeholder="Ссылка на обложку (опционально)" />
+        <button class="primary" style="grid-column: 1 / -1;" onclick="addGame()">Сохранить</button>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">Мои игры</span>
+          <h3 style="margin-top: 6px;">Список</h3>
+        </div>
+        <div class="muted">Всего: <span id="totalGames">0</span></div>
+      </div>
+      <div class="games-grid" id="gamesList"></div>
+    </section>
+
+    <section class="panel">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">Каталог</span>
+          <h3 style="margin-top: 6px;">Все игры из базы</h3>
+        </div>
+        <div class="muted">Общий список для быстрого просмотра.</div>
+      </div>
+      <div class="games-grid" id="allGamesList"></div>
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
