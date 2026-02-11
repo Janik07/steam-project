@@ -1,4 +1,5 @@
-const mongoose = require("../../.gitignore/node_modules/mongoose");
+const mongoose = require("mongoose");
+
 
 const connectDB = async () => {
   try {
