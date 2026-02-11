@@ -1,4 +1,4 @@
-const mongoose = require("../../.gitignore/node_modules/mongoose");
+const mongoose = require("mongoose");
 
 const userSchema = new mongoose.Schema(
   {
