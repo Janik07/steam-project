@@ -1,6 +1,6 @@
 const Game = require("../models/Game");
 
-// CREATE
+
 exports.createGame = async (req, res) => {
   try {
     const game = await Game.create({
@@ -14,19 +14,19 @@ exports.createGame = async (req, res) => {
   }
 };
 
-// GET ALL (только свои)
+
 exports.getGames = async (req, res) => {
   const games = await Game.find({ owner: req.user.id });
   res.json(games);
 };
 
-// GET ALL (все из базы)
+
 exports.getAllGames = async (_req, res) => {
   const games = await Game.find({});
   res.json(games);
 };
 
-// GET ONE
+
 exports.getGameById = async (req, res) => {
   const game = await Game.findOne({
     _id: req.params.id,
@@ -40,7 +40,7 @@ exports.getGameById = async (req, res) => {
   res.json(game);
 };
 
-// UPDATE
+
 exports.updateGame = async (req, res) => {
   const game = await Game.findOneAndUpdate(
     { _id: req.params.id, owner: req.user.id },
@@ -55,7 +55,7 @@ exports.updateGame = async (req, res) => {
   res.json(game);
 };
 
-// DELETE
+
 exports.deleteGame = async (req, res) => {
   const game = await Game.findOneAndDelete({
     _id: req.params.id,
